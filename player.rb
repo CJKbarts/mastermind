@@ -1,3 +1,5 @@
+include Utilities
+
 class Player
   attr_reader :name, :num_wins
 
@@ -84,8 +86,7 @@ class HumanPlayer < Player
   attr_reader :guess
 
   def make_guess
-    print "> "
-    result = gets.chomp.upcase
+    result = get_input("> ").upcase
     unless result.length == 4
       puts "Please enter a string of 4 letters"
       result = make_guess
