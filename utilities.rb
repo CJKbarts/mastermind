@@ -1,10 +1,10 @@
-module Display
-  def welcome
+module Utilities
+  def display_welcome
     puts "Welcome To Mastermind"
     puts
   end
 
-  def rules
+  def display_rules
     puts "Computer randomly picks a sequence of 4 colors from the colors:"
     puts "Red, Orange, Yellow, Green, Blue, Indigo, Violet, Pink"
     puts
@@ -20,8 +20,13 @@ module Display
     puts
   end
 
-  def guess_feedback(array)
+  def display_feedback(array)
     puts "Black balls: #{array[0]}"
     puts "White balls: #{array[1]}"
+  end
+
+  def get_input(prompt)
+    print prompt
+    gets.chomp
   end
 end
