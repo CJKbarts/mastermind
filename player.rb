@@ -1,8 +1,13 @@
 class Player
-  attr_reader :name
+  attr_reader :name, :num_wins
 
   def initialize(name)
     @name = name
+    @num_wins = 0
+  end
+
+  def increase_wins
+    @num_wins += 1
   end
 end
 
@@ -17,6 +22,7 @@ class CompPlayer < Player
     "6": "V",
     "7": "P"
   }
+  attr_reader :code
 
   def make_code
     result = get_random_color
@@ -27,24 +33,19 @@ class CompPlayer < Player
       result += color
     end
     @code = result
+    nil
   end
 
-  def evaluate_guess(player)
-    guess_array = player.guess.split("")
+  def evaluate_guess(guess)
+    guess_array = guess.split("")
     result = []
     @temp_code_array = code.split("")
     result.push(get_black_balls(guess_array))
-    return "#{player.name} guessed right!!!" if result[0] == 4
-
     result.push(get_white_balls(guess_array))
     result
   end
 
   private
-
-  def code
-    @code
-  end
 
   def temp_code_array
     @temp_code_array
@@ -67,7 +68,6 @@ class CompPlayer < Player
   end
 
   def get_white_balls(guess_array)
-    puts "White balls"
     result = 0
     guess_array.each_with_index do |char, index|
       if temp_code_array.include?(char)
@@ -84,10 +84,12 @@ class HumanPlayer < Player
   attr_reader :guess
 
   def make_guess
-    puts "#{name} enter your guess as a four letter string"
+    print "> "
     result = gets.chomp.upcase
-    result = guess unless result.length == 4
-
+    unless result.length == 4
+      puts "Please enter a string of 4 letters"
+      result = make_guess
+    end
     @guess = result
   end
 end
