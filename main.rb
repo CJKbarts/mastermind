@@ -1,13 +1,13 @@
 require './utilities'
 require './player'
+require './computer'
+require './user'
 require './game'
 include Utilities
 
 display_welcome
+user = User.new(get_input("Enter your name: "))
+comp = Computer.new("Computer")
 
-hum_player = HumanPlayer.new(get_input("Enter your name: "))
-comp_player = CompPlayer.new(get_input("Enter a name for the computer: "))
-puts
-
-game = Game.new(comp_player, hum_player)
+game = Game.new(comp, user)
 game.play_game
