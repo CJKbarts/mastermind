@@ -32,6 +32,7 @@ module Utilities
   end
 
   def display_feedback(feedback)
+    print "No balls earned" if feedback[0] == 0 && feedback[1] == 0
     feedback[0].times { print "B" }
     feedback[1].times { print "W" }
   end
