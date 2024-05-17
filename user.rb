@@ -5,7 +5,7 @@ class User < Player
     @code = result
   end
 
-  def make_guess
+  def make_guess(useless_placeholder)
     result = nil
     result = get_input("> ").upcase until valid_code?(result)
     @guess = result

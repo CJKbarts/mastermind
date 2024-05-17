@@ -2,12 +2,12 @@ include Utilities
 
 class Player
   COLOR_HASH = {
-    "0": "R",
-    "1": "O",
-    "2": "Y",
-    "3": "G",
-    "4": "B",
-    "5": "I",
+    "1": "R",
+    "2": "O",
+    "3": "Y",
+    "4": "G",
+    "5": "B",
+    "6": "I",
   }
 
   attr_reader :name, :num_wins, :code, :guess

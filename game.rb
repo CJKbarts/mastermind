@@ -47,8 +47,9 @@ class Game
     code_maker.make_code
     puts
     guess_history = Hash.new
+    evaluation = nil
     8.times do |count|
-      code_breaker.make_guess
+      code_breaker.make_guess(evaluation)
       evaluation = code_maker.evaluate_guess(code_maker.code, code_breaker.guess)
       guess_history[code_breaker.guess] = evaluation
       if evaluation[0] == 4
